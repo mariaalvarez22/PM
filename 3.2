@@ -1,0 +1,71 @@
+//Funciona como un contador, clicar encima del huevo y que a medida que clicas, suba los TAPS
+
+package com.example.romperloshuevos
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
+import com.example.romperloshuevos.ui.theme.RomperLosHuevosTheme
+import androidx.compose.ui.unit.dp
+
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            RomperLosHuevosTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    EggScreen(modifier = Modifier.padding(innerPadding))
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun EggScreen(modifier: Modifier = Modifier) {
+    var taps by remember { mutableStateOf(0) }
+
+    Column(
+        modifier = modifier
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        // Huevo que se puede tocar
+        Text(
+            text = "🥚",
+            fontSize = 96.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.clickable { taps++ }
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Contador de taps
+        Text(
+            text = "Taps: $taps",
+            fontSize = 24.sp
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun EggPreview() {
+    RomperLosHuevosTheme {
+        EggScreen()
+    }
+}
