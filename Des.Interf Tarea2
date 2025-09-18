@@ -1,0 +1,43 @@
+
+from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel
+import sys
+class VentanaPrincipal(QWidget):
+    def __init__(self):
+        super().__init__()  # Llamamos al constructor de la clase base QWidget
+        self.setWindowTitle("Ejemplo PySide6")  # Establecemos el título de la ventana
+
+        # Creamos un layout vertical para organizar los widgets
+        layout = QVBoxLayout()
+
+        # Creamos una etiqueta con un texto inicial
+        self.etiqueta = QLabel("¿Hola o adiós?")
+        layout.addWidget(self.etiqueta)  # Agregamos la etiqueta al layout
+
+        # Creamos el primer botón
+        self.boton1 = QPushButton(" Hola")
+        layout.addWidget(self.boton1)  # Agregamos el botón al layout
+        # Conectamos la señal 'clicked' del botón a la función 'cambiar_texto1'
+        self.boton1.clicked.connect(self.cambiar_texto1)
+
+        # Creamos el segundo botón
+        self.boton2 = QPushButton("Adiós")
+        layout.addWidget(self.boton2)  # Agregamos el botón al layout
+        # Conectamos la señal 'clicked' del botón a la función 'cambiar_texto2'
+        self.boton2.clicked.connect(self.cambiar_texto2)
+
+        self.setLayout(layout)
+
+    # función que cambia el texto de la etiqueta al dar el primer botón
+    def cambiar_texto1(self):
+        self.etiqueta.setText("¡Hola!")  # Cambiamos el texto de la etiqueta
+
+    # función que cambia el texto de la etiqueta al dar el segundo botón
+    def cambiar_texto2(self):
+        self.etiqueta.setText("¡Adiós!")  # Cambiamos el texto de la etiqueta
+
+# Código principal para ejecutar la aplicación
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    ventana = VentanaPrincipal()  # Creamos una instancia de nuestra ventana
+    ventana.show()  # Mostra ventana en pantalla
+    sys.exit(app.exec())
