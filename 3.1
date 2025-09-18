@@ -1,0 +1,53 @@
+package com.example.romperloshuevos
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
+import com.example.romperloshuevos.ui.theme.RomperLosHuevosTheme
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            RomperLosHuevosTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    EggScreen(modifier = Modifier.padding(innerPadding))
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun EggScreen(modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,   // Centra verticalmente
+        horizontalAlignment = Alignment.CenterHorizontally // Centra horizontalmente
+    ) {
+        Text(
+            text = "🥚",      // emoji del huevo
+            fontSize = 96.sp, // tamaño grande
+            textAlign = TextAlign.Center
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun EggPreview() {
+    RomperLosHuevosTheme {
+        EggScreen()
+    }
+}
