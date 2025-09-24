@@ -1,4 +1,4 @@
-package example.romperloshuevos
+package com.example.romperloshuevos
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
