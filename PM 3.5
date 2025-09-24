@@ -1,0 +1,112 @@
+package com.example.romperloshuevos
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.romperloshuevos.ui.theme.RomperLosHuevosTheme
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            RomperLosHuevosTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    EggScreen(modifier = Modifier.padding(innerPadding))
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun EggScreen(modifier: Modifier = Modifier) {
+    var taps by remember { mutableStateOf(0) }
+    val crackGoal = 10
+    val hatchGoal = 20
+    val progress = (taps.toFloat() / hatchGoal).coerceIn(0f, 1f)
+    val eggEmoji = when {
+        taps >= hatchGoal -> "🐣"
+        taps >= crackGoal -> "💥🥚"
+        else -> "🥚"
+    }
+    val message = when {
+        taps >= hatchGoal -> "¡Ha nacido!"
+        taps >= crackGoal -> "¡Se agrieta!"
+        else -> "Toca el huevo..."
+    }
+
+    // Estado de escala para animación
+    var isTapped by remember { mutableStateOf(false) }
+    val scale by animateFloatAsState(targetValue = if (isTapped) 1.2f else 1f)
+
+    val scope = rememberCoroutineScope()
+
+    Column(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = eggEmoji,
+            fontSize = 96.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .scale(scale) // Aplica la animación de escala
+                .clickable {
+                    taps++
+                    isTapped = true
+                    scope.launch {
+                        delay(150) // duración breve para efecto de rebote
+                        isTapped = false
+                    }
+                }
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text(text = "Taps: $taps", fontSize = 24.sp)
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Text(text = message, fontSize = 20.sp)
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        LinearProgressIndicator(
+            progress = progress,
+            modifier = Modifier
+                .fillMaxWidth(0.7f)
+                .height(12.dp)
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Text(text = "${(progress * 100).toInt()}%", fontSize = 18.sp)
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun EggPreview() {
+    RomperLosHuevosTheme {
+        EggScreen()
+    }
+}
