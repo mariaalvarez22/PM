@@ -1,0 +1,8 @@
+Diferencias: 
+Con XML usamos la paleta para diseñar y findViewById para acceder a los elementos desde el código. Con Compose, todo se hace directamente en Kotlin, combinando diseño y lógica en un solo lugar.
+
+Más fácil de entender: 
+Compose me resultó más fácil de entender y modificar porque ves la interfaz y el código juntos, sin tener que enlazar elementos desde XML.
+
+Más cómodo para proyectos grandes: 
+Compose es más cómodo para proyectos grandes, ya que es más fácil de organizar, modular y mantener. XML puede ser más complicado cuando hay muchas pantallas o elementos.
