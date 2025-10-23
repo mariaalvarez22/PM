@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    ```
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:gravity="center_horizontal">
+
+        <!-- Imagen de perfil -->
+        <ImageView
+            android:id="@+id/imgPerfil"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@mipmap/ic_launcher_round"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="Imagen de perfil" />
+
+        <!-- Nombre -->
+        <TextView
+            android:id="@+id/txtNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MERY"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Edad -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edad: 20 años"
+            android:textSize="18sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Ciudad -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ciudad: Redondela, España"
+            android:textSize="18sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Estudios -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estudios: Desarrollo de Aplicaciones Multiplataforma (DAM)"
+            android:textSize="18sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Aficiones -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aficiones: Viajar, estar con niños y diseño digital"
+            android:textSize="18sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Descripción -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Soy una persona creativa y curiosa, siempre buscando aprender cosas nuevas y mejorar mis habilidades tecnológicas."
+            android:textSize="18sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Proyecto actual -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Proyecto actual: App de gestión de tareas en Android Studio"
+            android:textSize="18sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Frase favorita -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Frase favorita: 'El mejor modo de predecir el futuro es crearlo.'"
+            android:textSize="18sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Switch modo oscuro -->
+        <Switch
+            android:id="@+id/switchModoOscuro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modo oscuro"
+            android:textSize="18sp"
+            android:textColor="#333333"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Botón final -->
+        <Button
+            android:id="@+id/btnVerMas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ver más"
+            android:padding="10dp"
+            android:textSize="18sp"
+            android:backgroundTint="#3F51B5"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="24dp" />
+
+    </LinearLayout>
+    ```
+
+</ScrollView>
